@@ -1,0 +1,51 @@
+<%- include("header") %>
+
+    <div class="main-content profile">
+        <div class="container-fluid" style="padding-left: 100px;">
+            <h1>Your Profile</h1>
+            <div class="profile-items">
+                <div class="pro-head">
+                    <div class="user-image">
+                        <img src="<%= adminData.adminImage %>" alt="" />
+                    </div>
+                    <h3 class="pro-name">
+                        <%= adminData.name.charAt(0).toUpperCase() + adminData.name.slice(1); %>
+                    </h3>
+                </div>
+                <div class="pro-content">
+                    <div class="pro-space"></div>
+                    <div class="pro-title">
+                        <h4>Name </h4>
+                        <h4>Email </h4>
+                        <h4>Gender </h4>
+                        <h4>Hobby </h4>
+                        <h4>City </h4>
+                        <h4>Description </h4>
+                        <h4>Since </h4>
+                    </div>
+                    <div class="dots">
+                        <h4> : </h4>
+                        <h4> : </h4>
+                        <h4> : </h4>
+                        <h4> : </h4>
+                        <h4> : </h4>
+                        <h4> : </h4>
+                        <h4> : </h4>
+                    </div>
+                    <div class="pro-values">
+                        <h4> <%= adminData.name.charAt(0).toUpperCase() + adminData.name.slice(1); %></h4>
+                        <h4> <%= adminData.email %> </h4>
+                        <h4> <%= adminData.gender.charAt(0).toUpperCase() + adminData.gender.slice(1); %> </h4>
+                        <h4> <%= adminData.hobby %> </h4>
+                        <h4> <%= adminData.city %> </h4>
+                        <h4> <%= adminData.description %> </h4>
+                        <h4> <%= adminData.createdDate %> </h4>
+                    </div>
+                </div>
+                <a href="/admin/updateProfile/<%= adminData._id %>" class="pro-btn">Update Info</a>
+            </div>
+
+        </div>
+    </div>
+
+<%- include("footer") %>
