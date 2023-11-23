@@ -2,13 +2,30 @@ const express = require("express");
 const port = 8080;
 const path = require("path");
 const app = express();
-const db = require("./config/db");
+// const db = require("./config/db");
 const Admin = require("./model/Admin");
 const cookieParser = require("cookie-parser");
 
 const session = require("express-session");
 const passport = require("passport");
 const localStratagy = require("./config/passport-local");
+
+const mongoose = require('mongoose')
+
+const url = `mongodb+srv://bkladumor7:bhargav123@cluster0.ubwhmck.mongodb.net/`;
+
+const connectionParams={
+    useNewUrlParser: true,
+    useUnifiedTopology: true 
+}
+mongoose.connect(url,connectionParams)
+    .then( () => {
+        console.log('Connected to database ')
+    })
+    .catch( (err) => {
+        console.error(`Error connecting to the database. \n${err}`);
+    })
+
 
 app.use(cookieParser());
 app.set("view engine","ejs");
