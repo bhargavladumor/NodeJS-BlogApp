@@ -1,0 +1,135 @@
+<%- include("user_header") %>
+				<section class="page-heading wow fadeIn" data-wow-duration="1.5s" style="background-image: url(files/images/01-heading.jpg)">
+					<div class="container">
+						<div class="page-name">
+							<h1>Single Post</h1>
+							<span>Lovely layout of heading</span>
+						</div>
+					</div>
+				</section>
+				
+				<section class="blog-single">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-8">
+								<div class="blog-single-item">
+									<img src="<%= postData.postImage %>" alt="">
+									<div class="blog-single-content">	
+										<h3><a href="#"><%= postData.title %></a></h3>
+										<span><a href="#"><%= postData.name %></a> / <a href="#"><%= postData.createdDate %></a> / <a href="#"><%= postData.catagory %></a></span>
+										<p><%= postData.desc %></p>
+										<div class="share-post">
+											<span>Share on: <a href="#">facebook</a>, <a href="#">twitter</a>, <a href="#">linkedin</a>, <a href="#">instagram</a></span>
+										</div>
+									</div>
+									
+									<% if(allPosts[currentPos-1]){ %>
+									<div class="prev-btn col-md-6 col-sm-6 col-xs-6">
+										<a href="/singlePost/<%= allPosts[currentPos-1].id %>"><i class="fa fa-angle-left"></i>Previous</a>
+									</div>
+									<% } %>
+
+									<% if(allPosts[currentPos+1]){ %>
+									<div class="next-btn col-md-6 col-sm-6 col-xs-6">
+										<a href="/singlePost/<%= allPosts[currentPos+1].id %>">Next<i class="fa fa-angle-right"></i></a>
+									</div>
+									<% } %>
+
+								</div>
+								<div class="blog-comments">
+									<h2><%= cmData.length %> Comments</h2>
+									<ul class="coments-content">
+										<% var bool = 1; for(var v of cmData){
+										if(bool == 1){ %>
+										<li class="first-comment-item">
+											<img src="<%= v.userImage %>>" alt="">
+											<span class="author-title"><a href="#"><%= v.name %></a></span>
+											<span class="comment-date"><%= v.createdDate %></span>
+											<p><%= v.message %></p>
+										</li>
+										<% bool = 0;} else{ %>
+										<li class="second-comment-item">
+											<img src="<%= v.userImage %>>" alt="">
+											<span class="author-title"><a href="#"><%= v.name %></a></span>
+											<span class="comment-date"><%= v.createdDate %></span>
+											<p><%= v.message %></p>
+										</li>	
+										<% bool = 1; } } %>									
+									</ul>
+								</div>
+								<div class="submit-comment col-sm-12">
+									<h2>Leave A Comment</h2>
+									<form id="contact_form" action="/admin/post/comments/addComments" method="POST" enctype="multipart/form-data">
+										<input type="hidden" name="postId" value="<%= postId %>">
+										<div class=" col-md-4 col-sm-4 col-xs-6">
+											<input type="text" class="blog-search-field" name="name" placeholder="Your name...">
+										</div>
+										<div class="col-md-4 col-sm-4 col-xs-6">
+											<input type="email" class="blog-search-field" name="email" placeholder="Your email...">
+										</div>
+										<div class="col-md-4 col-sm-4 col-xs-12">
+											<input type="file" class="subject" name="userImage" >
+										</div>
+										<div class="col-md-12 col-sm-12">
+											<textarea id="message" class="input" name="message" placeholder="Comment..."></textarea>
+										</div>
+										<div class="submit-coment col-md-12">
+											<div class="btn-black">
+												<button type="submit">Submit now</button>
+											</div>
+										</div>
+									</form>		
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="widget-item">
+									<h2>Search here</h2>
+									<div class="dec-line"></div>
+									<form method="get" id="blog-search" class="blog-search">
+										<input type="text" class="blog-search-field" name="s" placeholder="Type keyword..." value="">
+									</form>
+								</div>
+								<div class="widget-item">
+									<h2>About Us</h2>
+									<div class="dec-line">	
+									</div>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique earum quod iste, natus quaerat facere a rem dolor sit amet, et placeat nemo.</p>
+									<div class="social-icons">
+										<ul>
+											<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+											<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+											<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+											<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+											<li><a href="#"><i class="fa fa-rss"></i></a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="widget-item">
+									<h2>Recent Posts</h2>
+									<div class="dec-line"></div>
+									<ul class="recent-item">
+										<% for(let v of recentPosts){ %>
+										<li class="recent-post-item" style="width: 300px !important;">
+											<a href="/singlePost/<%= v.id %>">
+												<img src="<%= v.postImage %>" alt="">
+												<span class="post-title"><%= v.title %></span>
+											</a>
+											<span class="post-info"><%= v.createdDate %></span>
+										</li>
+										<% } %>
+										
+									</ul>
+								</div>
+								<div class="widget-item">
+									<h2>From Flickr</h2>
+									<div class="dec-line"></div>
+									<div class="flickr-feed">
+							        	<ul class="flickr-images">
+							        	</ul>
+							        </div>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</section>
+<%- include("user_footer") %>

@@ -6,40 +6,17 @@
         <div class="fullwidthbanner">
             <ul>
                 
-                
+                <% for(var item of sliderData){ %>
                 <li class="first-slide" data-transition="fade" data-slotamount="10" data-masterspeed="300">
-                    <img src="slider/Thierical851.jpg" data-fullwidthcentering="on" alt="slide">
+                    <img src="<%= item.sliderImage %>" data-fullwidthcentering="on" alt="slide">
 
-                    <div class="tp-caption first-line lft tp-resizeme start" data-x="center" data-hoffset="0" data-y="250" data-speed="1000" data-start="200" data-easing="Power4.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0" data-endelementdelay="0">First Image</div>
+                    <div class="tp-caption first-line lft tp-resizeme start" data-x="center" data-hoffset="0" data-y="250" data-speed="1000" data-start="200" data-easing="Power4.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0" data-endelementdelay="0"><%= item.title %></div>
 
-                    <div class="tp-caption second-line lfb tp-resizeme start" data-x="center" data-hoffset="0" data-y="340" data-speed="1000" data-start="800" data-easing="Power4.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0" data-endelementdelay="0">First slider</div>
+                    <div class="tp-caption second-line lfb tp-resizeme start" data-x="center" data-hoffset="0" data-y="340" data-speed="1000" data-start="800" data-easing="Power4.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0" data-endelementdelay="0"><%= item.desc %></div>
 
-                    <div class="tp-caption slider-btn sfb tp-resizeme start" data-x="center" data-hoffset="0" data-y="510" data-speed="1000" data-start="2200" data-easing="Power4.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0" data-endelementdelay="0"><a href="#" class="btn btn-slider">Discover More</a></div>
+                    <div class="tp-caption slider-btn sfb tp-resizeme start" data-x="center" data-hoffset="0" data-y="510" data-speed="1000" data-start="2200" data-easing="Power4.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0" data-endelementdelay="0"><a href="<%= item.link %>" class="btn btn-slider">Discover More</a></div>
                 </li>
-
-                <li class="first-slide" data-transition="fade" data-slotamount="10" data-masterspeed="300">
-                    <img src="slider/Traning_Education606.jpg" data-fullwidthcentering="on" alt="slide">
-
-                    <div class="tp-caption first-line lft tp-resizeme start" data-x="center" data-hoffset="0" data-y="250" data-speed="1000" data-start="200" data-easing="Power4.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0" data-endelementdelay="0">Second Image</div>
-
-                    <div class="tp-caption second-line lfb tp-resizeme start" data-x="center" data-hoffset="0" data-y="340" data-speed="1000" data-start="800" data-easing="Power4.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0" data-endelementdelay="0">second Slider</div>
-
-                    <div class="tp-caption slider-btn sfb tp-resizeme start" data-x="center" data-hoffset="0" data-y="510" data-speed="1000" data-start="2200" data-easing="Power4.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0" data-endelementdelay="0"><a href="#" class="btn btn-slider">Discover More</a></div>
-                </li>
-
-
-                <li class="first-slide" data-transition="fade" data-slotamount="10" data-masterspeed="300">
-                    <img src="slider/Computer429.jpg" data-fullwidthcentering="on" alt="slide">
-
-                    <div class="tp-caption first-line lft tp-resizeme start" data-x="center" data-hoffset="0" data-y="250" data-speed="1000" data-start="200" data-easing="Power4.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0" data-endelementdelay="0">Third Image</div>
-
-                    <div class="tp-caption second-line lfb tp-resizeme start" data-x="center" data-hoffset="0" data-y="340" data-speed="1000" data-start="800" data-easing="Power4.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0" data-endelementdelay="0">Third Slider</div>
-
-                    <div class="tp-caption slider-btn sfb tp-resizeme start" data-x="center" data-hoffset="0" data-y="510" data-speed="1000" data-start="2200" data-easing="Power4.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0" data-endelementdelay="0"><a href="#" class="btn btn-slider">Discover More</a></div>
-                </li>
-            
-
-                
+                <% } %>
                 
             </ul>
         </div>
@@ -55,25 +32,14 @@
             <div class="section-dec"></div>
         </div>
         
+        <% for(var item of offerData){ %>
         <div class="service-item col-md-4">
-            <span><i class="fa fa-eye"></i></span>
-            <div class="tittle"><h3>This is first heading</h3></div>
-            <p>orem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat quod voluptate consequuntur ad quasi, dolores obcaecati ex aliquid, dolor provident accusamus omnis dolorum ipsam. Voluptatem ipsum expedita, corporis facilis laborum asperiores nostrum! Amet porro numquam ratione temporibus quia dolorem sint lorem voluptates quasi mollitia.</p>
+            <span><i class="<%= item.icon %>"></i></span>
+            <div class="tittle"><h3><%= item.title %></h3></div>
+            <p><%= item.desc %></p>
         </div>
+        <% } %>
 
-        <div class="service-item col-md-4">
-            <span><i class="fa fa-setting"></i></span>
-            <div class="tittle"><h3>This is first heading</h3></div>
-            <p>orem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat quod voluptate consequuntur ad quasi, dolores obcaecati ex aliquid, dolor provident accusamus omnis dolorum ipsam. Voluptatem ipsum expedita, corporis facilis laborum asperiores nostrum! Amet porro numquam ratione temporibus quia dolorem sint lorem voluptates quasi mollitia.</p>
-        </div>
-
-
-        <div class="service-item col-md-4">
-            <span><i class="fa fa-eye"></i></span>
-            <div class="tittle"><h3>This is first heading</h3></div>
-            <p>orem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat quod voluptate consequuntur ad quasi, dolores obcaecati ex aliquid, dolor provident accusamus omnis dolorum ipsam. Voluptatem ipsum expedita, corporis facilis laborum asperiores nostrum! Amet porro numquam ratione temporibus quia dolorem sint lorem voluptates quasi mollitia.</p>
-        </div>
-        
     </div>
 </section>
 
@@ -113,78 +79,19 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="owl-portfolio" class="owl-carousel owl-theme">
+
+                    <% for(var item of photosData){ %>
                     <div class="item">
                           <figure>
-                            <img alt="portfolio" src="files/images/01-portfolio.jpg">
+                            <img alt="portfolio" src="<%= item.photosImage %>">
                             <figcaption>
-                                <h3>Plaid Authentic</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur.</p>
+                                <h3><%= item.title %></h3>
+                                <p><%= item.desc %>.</p>
                             </figcaption>
                         </figure>								    
                     </div>
-                    <div class="item">
-                          <figure>
-                            <img alt="portfolio" src="files/images/02-portfolio.jpg">
-                            <figcaption>
-                                <h3>Portland Neutra</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur.</p>
-                            </figcaption>
-                        </figure>								    
-                    </div>
-                    <div class="item">
-                          <figure>
-                            <img alt="portfolio" src="files/images/03-portfolio.jpg">
-                            <figcaption>
-                                <h3>Synth Thundercats</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur.</p>
-                            </figcaption>
-                        </figure>								    
-                    </div>
-                    <div class="item">
-                          <figure>
-                            <img alt="portfolio" src="files/images/04-portfolio.jpg">
-                            <figcaption>
-                                <h3>Bushwick Letterpress</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur.</p>
-                            </figcaption>
-                        </figure>								    
-                    </div>
-                    <div class="item">
-                          <figure>
-                            <img alt="portfolio" src="files/images/05-portfolio.jpg">
-                            <figcaption>
-                                <h3>Fashion Heirloom</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur.</p>
-                            </figcaption>
-                        </figure>								    
-                    </div>
-                    <div class="item">
-                          <figure>
-                            <img alt="portfolio" src="files/images/06-portfolio.jpg">
-                            <figcaption>
-                                <h3>Locavore Brooklyn</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur.</p>
-                            </figcaption>
-                        </figure>								    
-                    </div>
-                    <div class="item">
-                          <figure>
-                            <img alt="portfolio" src="files/images/07-portfolio.jpg">
-                            <figcaption>
-                                <h3>Meggings Mixtape</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur.</p>
-                            </figcaption>
-                        </figure>								    
-                    </div>
-                    <div class="item">
-                          <figure>
-                            <img alt="portfolio" src="files/images/08-portfolio.jpg">
-                            <figcaption>
-                                <h3>Normcore Dreamcatcher</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur.</p>
-                            </figcaption>
-                        </figure>								    
-                    </div>
+                    <% } %>
+
                 </div>
             </div>
         </div>
@@ -206,45 +113,16 @@
             <div class="col-md-12">
                 <div id="owl-demo" class="owl-carousel owl-theme">
                     
+                    <% for(var item of reviewData){ %>
                    <div class="item">
                           <div class="testimonials-post">
                               <span class="fa fa-quote-left"></span>
-                              <p>“ At vero eos et accusamus et iusto odio dignissimos ducimus qui molestias excepturi blanditis ”</p>
-                              <h6>Akhil Luis - <em>India, Calicut</em></h6>
+                              <p>“ <%= item.desc %> ”</p>
+                              <h6><%= item.name %> - <em><%= item.country %></em></h6>
                           </div>
                     </div>
-
-                     <div class="item">
-                          <div class="testimonials-post">
-                              <span class="fa fa-quote-left"></span>
-                              <p>“ At vero eos et accusamus et iusto odio dignissimos ducimus qui molestias excepturi blanditis ”</p>
-                              <h6>Akhil Luis - <em>India, Calicut</em></h6>
-                          </div>
-                    </div>
-
-                     <div class="item">
-                          <div class="testimonials-post">
-                              <span class="fa fa-quote-left"></span>
-                              <p>“ At vero eos et accusamus et iusto odio dignissimos ducimus qui molestias excepturi blanditis ”</p>
-                              <h6>Akhil Luis - <em>India, Calicut</em></h6>
-                          </div>
-                    </div>
-
-                     <div class="item">
-                          <div class="testimonials-post">
-                              <span class="fa fa-quote-left"></span>
-                              <p>“ At vero eos et accusamus et iusto odio dignissimos ducimus qui molestias excepturi blanditis ”</p>
-                              <h6>Akhil Luis - <em>India, Calicut</em></h6>
-                          </div>
-                    </div>
-                
-                    <div class="item">
-                          <div class="testimonials-post">
-                              <span class="fa fa-quote-left"></span>
-                              <p>“ At vero eos et accusamus et iusto odio dignissimos ducimus qui molestias excepturi blanditis ”</p>
-                              <h6>Akhil Luis - <em>India, Calicut</em></h6>
-                          </div>
-                    </div>
+                    <% } %>
+                    
                 </div>
             </div>
         </div>
@@ -267,45 +145,20 @@
             <div class="section-dec"></div>
         </div>
         <div class="blog-item">
+
+                <% for(var item of postData) { %>
                 <div class="col-md-4">
                     
-                        <a href="blog-single.html"><img src="photo/slider1.jpg"alt=""></a>
-                        <h3><a href="blog-single.html">Navin gadde</a></h3>
-                        <span><a href="#">This is first</a> / <a href="#">This is second</a> / <a href="#">Uncategorized</a></span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat quod voluptate ...</p>
+                        <a href="#"><img src="<%= item.postImage %>" alt="" height="250px" ></a>
+                        <h3><a href="#"><%= item.title %></a></h3>
+                        <span><%= item.name %> / <%= item.catagory %> / <%= item.createdDate %></span>
+                        <p><%= item.desc.slice(0,100) %>. . .</p>
                         <div class="read-more">
-                            <a href="blog-single.html">Read more</a>
+                            <a href="/singlePost/<%= item.id %>">Read more</a>
                         </div>
                     
                 </div>
-
-
-                <div class="col-md-4">
-                    
-                        <a href="blog-single.html"><img src="photo/slider2.jpg"alt=""></a>
-                        <h3><a href="blog-single.html">Navin gadde</a></h3>
-                        <span><a href="#">This is first</a> / <a href="#">This is second</a> / <a href="#">Uncategorized</a></span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat quod voluptate .....</p>
-                        <div class="read-more">
-                            <a href="blog-single.html">Read more</a>
-                        </div>
-                    
-                </div>
-
-
-                <div class="col-md-4">
-                    
-                        <a href="blog-single.html"><img src="photo/slider3.jpg"alt=""></a>
-                        <h3><a href="blog-single.html">Navin gadde</a></h3>
-                        <span><a href="#">This is first</a> / <a href="#">This is second</a> / <a href="#">Uncategorized</a></span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat quod voluptate ...</p>
-                        <div class="read-more">
-                            <a href="blog-single.html">Read more</a>
-                        </div>
-                    
-                </div>
-
-
+                <% } %>
 
         </div>
     

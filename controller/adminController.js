@@ -11,11 +11,44 @@ module.exports.dashboard = async (req,res)=>{
 // User's information
 module.exports.viewAdminData = async (req,res)=>{
     try{
-        let data = await Admin.find({});
-        if(req.cookies.admin){
+        let adData = req.user;
+
+        let search = '';
+        let page = 0;
+
+        if(req.query.page){
+            page = req.query.page
+        }
+        let perPage = 2;
+
+        if(req.query.search)
+        {
+            search = req.query.search;
+        }
+        if (adData) {
+            let data = await Admin.find({
+                $or : [
+                    {'name' : {$regex : `.*${search}.*` , $options : "i"}},
+                    {'email' : {$regex : `.*${search}.*`, $options : "i"}}
+                ]
+            })
+            .limit(perPage)
+            .skip(perPage*page);
+
+            let totalDocumets = await Admin.find({
+                $or : [
+                    {'name' : {$regex : `.*${search}.*` , $options : "i"}},
+                    {'email' : {$regex : `.*${search}.*`, $options : "i"}}
+                ]
+            }).countDocuments();
+            let totalPages = Math.ceil(totalDocumets/perPage);
+
             if(data){
                 res.render("viewAdminData",{
                     adData : data,
+                    search : search,
+                    totalPages : totalPages,
+                    currentPage : page
                 })
             }
         }
@@ -25,7 +58,7 @@ module.exports.viewAdminData = async (req,res)=>{
         }
     }
     catch(err){
-        console.log("Something wrong")
+        console.log("Something wrong "+err)
         res.redirect("/admin/viewAdmindata")
     }
 }
@@ -420,6 +453,32 @@ module.exports.editForgetPass = async (req,res) => {
 
     } catch (error) {
         console.log("Something wrong : "+error);
+        res.redirect("back");
+    }
+}
+
+// Delete many
+module.exports.deleteMany = async (req,res) =>{
+    try {
+        
+        if(req.body.deleteItems){
+            let deletedData = await Admin.deleteMany({_id : {$in : req.body.deleteItems}});
+            if(deletedData){
+                console.log("Deleted successfully");
+                res.redirect("back");
+            }
+            else{
+                console.log("No data found");
+                res.redirect("back");
+            }
+        }
+        else{
+            console.log("No data found");
+            res.redirect("back");
+        }
+
+    } catch (error) {
+        console.log(error);
         res.redirect("back");
     }
 }

@@ -23,32 +23,32 @@ routes.get("/dashboard", passport.checkAuth ,adminController.dashboard);
 routes.get("/logout", adminController.logout);
 
 // Insert record
-routes.get("/insertAdminData", adminController.insertAdminData)
+routes.get("/insertAdminData", passport.checkAuth ,adminController.insertAdminData)
 routes.post("/createAdminData", Admin.uploadAdminImage, adminController.createAdminData)
 
 // View records
-routes.get("/viewAdminData",adminController.viewAdminData);
+routes.get("/viewAdminData",passport.checkAuth ,adminController.viewAdminData);
 
 // Soft delete
 routes.get("/deactive/:id", adminController.deactive);
 routes.get("/active/:id", adminController.active);
 
 // Delete records
-routes.get("/deleteData/:id", adminController.deleteData);
+routes.get("/deleteData/:id", passport.checkAuth ,adminController.deleteData);
 
 // Update records
-routes.get("/updateData/:id", adminController.updateData);
+routes.get("/updateData/:id", passport.checkAuth ,adminController.updateData);
 routes.post("/editAdminData", Admin.uploadAdminImage , adminController.editData);
 
 // Change password
-routes.get("/changePassword", adminController.changePassword)
+routes.get("/changePassword", passport.checkAuth ,adminController.changePassword)
 routes.post("/editPassword", adminController.editPassword);
 
 // Profile
-routes.get("/profile", adminController.profile);
+routes.get("/profile",passport.checkAuth , adminController.profile);
 
 // Update Profile
-routes.get("/updateProfile/:id", adminController.updateProfile);
+routes.get("/updateProfile/:id", passport.checkAuth ,adminController.updateProfile);
 
 
 
@@ -73,7 +73,22 @@ routes.post("/checkOTP", adminController.checkOTP);
 routes.get("/changeForgetPass",adminController.changeForgetPass);
 routes.post("/editForgetPass",adminController.editForgetPass);
 
+// Delete Many
+routes.post("/deleteMany", adminController.deleteMany);
+
 // User
 routes.use("/slider",passport.checkAuth,require("./slider"));
+
+routes.use("/offer",passport.checkAuth,require("./offer"));
+
+routes.use("/photos",passport.checkAuth,require("./photos"));
+
+routes.use("/review",passport.checkAuth,require("./review"));
+
+routes.use("/post",passport.checkAuth,require("./post"));
+
+routes.use("/category",passport.checkAuth,require("./category"));
+
+routes.use("/subCategory",passport.checkAuth,require("./subCategory"));
 
 module.exports = routes;
